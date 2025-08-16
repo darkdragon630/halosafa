@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang di UIN Salatiga, Husna</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #f8f4ff 100%);
+            color: #5a3d7a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 182, 193, 0.2);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(216, 191, 216, 0.2);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        h1 {
+            color: #8e44ad;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h2 {
+            color: #9b59b6;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .name-highlight {
+            font-weight: 600;
+            color: #8e44ad;
+            text-decoration: underline;
+        }
+
+        .uni-highlight {
+            font-weight: 600;
+            color: #9b59b6;
+        }
+
+        .flowers {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        .flower1 {
+            top: 20px;
+            left: 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .flower2 {
+            bottom: 30px;
+            right: 30px;
+            animation: float 8s ease-in-out infinite 2s;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff6b81;
+            animation: heartBeat 1.5s ease infinite;
+        }
+
+        .photo-frame {
+            width: 180px;
+            height: 180px;
+            margin: 1rem auto 2rem;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            background: #f8f4ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .signature {
+            font-style: italic;
+            margin-top: 2rem;
+            font-weight: 500;
+            color: #8e44ad;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, #9b59b6, #8e44ad);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(155, 89, 182, 0.6);
+        }
+
+        .hearts-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 107, 129, 0.6);
+            transform: rotate(45deg);
+            animation: floatUp 4s linear infinite;
+        }
+
+        .floating-heart::before, 
+        .floating-heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 107, 129, 0.6);
+            border-radius: 50%;
+        }
+
+        .floating-heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .floating-heart::after {
+            top: 0;
+            left: -10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: rotate(45deg) translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(45deg) translateY(-500px) scale(0.2);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .photo-frame {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container" id="hearts"></div>
+    
+    <div class="flower1 flowers">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8fd5e78c-4779-43fe-99e2-c14535752170.png" alt="Bunga lavender" />
+    </div>
+    
+    <div class="flower2 flowers">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5b384877-de8c-4b44-bb85-58ad3ecdc63a.png" alt="Bunga mawar pink" />
+    </div>
+    
+    <div class="container">
+        <div class="photo-frame">
+            <img src="safa.jpeg" alt="Potret Safarotul Husna" />
+        </div>
+        
+        <h1>Selamat Datang di Kampus</h1>
+        <h2>Universitas Islam Negeri Salatiga</h2>
+        
+        <p>
+            Assalamu'alaikum <span class="name-highlight">Safarotul Husna</span>,<br><br>
+            Selamat ya atas diterimanya di <span class="uni-highlight">UIN Salatiga</span>! Ini adalah awal perjalanan baru yang indah dalam hidupmu. 
+            Semoga setiap langkahmu di kampus ini penuh berkah, ilmu yang bermanfaat, dan pertemanan yang berarti.
+        </p>
+        
+        <p>
+            Sukses selalu untuk perjalanan akademismu, semoga impian-impianmu terwujud satu per satu. 
+            Dan siapa tahu, mungkin di antara lorong-lorong kampus UIN Salatiga ini, ada cerita indah yang menantimu.
+        </p>
+        
+        <p class="signature">Dengan senyuman,<br>Teman barumu</p>
+        
+        <button class="btn" id="moreHearts">Kirim Senyuman</button>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+            
+            document.getElementById('moreHearts').addEventListener('click', function() {
+                createHearts(15);
+
+                const bigHeart = document.createElement('div');
+                bigHeart.className = 'heart';
+                bigHeart.style.fontSize = '60px';
+                bigHeart.style.top = '50%';
+                bigHeart.style.left = '50%';
+                bigHeart.style.transform = 'translate(-50%, -50%)';
+                bigHeart.style.position = 'fixed';
+                bigHeart.style.zIndex = '1000';
+                bigHeart.style.animation = 'heartBeat 1s ease, fadeIn 1s ease-out forwards';
+                bigHeart.innerHTML = '❤️';
+                document.body.appendChild(bigHeart);
+
+                setTimeout(() => {
+                    bigHeart.remove();
+                }, 2000);
+
+                let nomor = "6289635637904";
+                let pesan = "Hai Husna 😊, ini aku kirim senyuman buat kamu ❤️";
+                let url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
+
+                window.open(url, '_blank');
+            });
+        });
+        
+        function createHearts(count = 10) {
+            const container = document.getElementById('hearts');
+            
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                
+                const left = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const duration = 3 + Math.random() * 3;
+                const size = 10 + Math.random() * 10;
+                
+                heart.style.left = `${left}%`;
+                heart.style.bottom = '-20px';
+                heart.style.width = `${size}px`;
+                heart.style.height = `${size}px`;
+                heart.style.animationDelay = `${delay}s`;
+                heart.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, duration * 1000);
+            }
+        }
+    </script>
+</body>
+</html>
